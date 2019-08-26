@@ -24,13 +24,10 @@ git checkout v4.3.6
 # make install
 BUILD_DIR=$1
 
-PHPIZE_BIN=$(command -v phpize 2>/dev/null)
-# PHPCONFIG_BIN=$(command -v php-config 2>/dev/null)
-
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 
-bash ${PHPIZE_BIN} && \
+/app/php/bin/phpize && \
 ./configure --enable-openssl --enable-sockets && \
 make && make install
 
