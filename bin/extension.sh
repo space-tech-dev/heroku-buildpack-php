@@ -23,12 +23,17 @@ git checkout v4.3.6
 # make
 # make install
 BUILD_DIR=$1
+
+PHPIZE_BIN=$(command -v phpize 2>/dev/null)
+# PHPCONFIG_BIN=$(command -v php-config 2>/dev/null)
+
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
-bash phpize && \
-./configure && \
+
+bash ${PHPIZE_BIN} && \
+./configure --enable-openssl --enable-sockets && \
 make && make install
 
 # cd
-# echo "important extension phalcon into php.ini"
-# echo "extension=phalcon.so" >> /app/.heroku/php/etc/php/php.ini
+echo "important extension phalcon into php.ini"
+echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
