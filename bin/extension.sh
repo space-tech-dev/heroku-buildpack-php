@@ -27,10 +27,11 @@ BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 
-/app/php/bin/phpize && \
+which phpize
+phpize && \
 ./configure --enable-openssl --enable-sockets && \
 make && make install
 
 # cd
-echo "important extension phalcon into php.ini"
+echo "important extension swoole into php.ini"
 echo "extension=swoole.so" >> /app/.heroku/php/etc/php/php.ini
