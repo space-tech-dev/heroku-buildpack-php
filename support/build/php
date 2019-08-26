@@ -163,7 +163,7 @@ export PATH=${OUT_PREFIX}/bin:$PATH
 	--with-pdo-sqlite=shared \
 	--with-xmlrpc=shared \
 	--with-xsl=shared \
-	
+	--with-swoole
 	"${configureopts[@]}"
 make -s -j 9
 make install -s
