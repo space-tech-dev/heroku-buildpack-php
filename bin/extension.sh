@@ -27,7 +27,7 @@ BUILD_DIR=$1
 ln -s $BUILD_DIR/.heroku /app/.heroku
 export PATH=/app/.heroku/php/bin:$PATH
 
-which phpize
+pwd
 phpize && \
 ./configure --enable-openssl --enable-sockets && \
 make && make install
